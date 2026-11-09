@@ -22,5 +22,7 @@ Pause, go to the ONLINE tab: host a public, passworded or friends-only lobby, jo
 friends. Peer to peer through Steam: no server of anyone's.
 
 Credits
-Super Mario 64 is Nintendo's. Render 96's textures and models by the Render 96 team. The remixed music is by the
-artists named on the first sign in the castle grounds and in MUSIC_CREDITS.
+STORROR Parkour PRO is by Hole in the Sleeve Game Studios. Super Mario 64 is Nintendo's. Render 96's textures and models
+are by the Render 96 team (github.com/Render96). The remixed music is by the artists named on the first sign in the
+castle grounds and in MUSIC_CREDITS.md. UE4SS loads the mod. A free fan project, not affiliated with or endorsed by
+Nintendo, Hole in the Sleeve Game Studios, STORROR or the Render 96 team.
