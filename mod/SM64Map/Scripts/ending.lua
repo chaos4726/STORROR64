@@ -304,6 +304,9 @@ function E.start()
     local data = lib.load_data("data.ending")
     if not (data and data.shots and #data.shots > 0) then log("ending: no data"); return false end
     local s = { data = data, world = world:GetAddress(), phase = "outro", t = 0.0, of = 0.0 }
+    -- (the music's volume as it was: Peach's words duck it and THE END fades it, and it is put back at E.stop however
+    -- the ending ends)
+    s.music_base = MUSIC and MUSIC.volume or nil
     local cam = lib.camera(world, "ending", OFFSET, { Pitch = 0.0, Yaw = 0.0, Roll = 0.0 })
     if not valid(cam) then log("ending: no camera"); return false end
     s.cam = cam
@@ -1646,6 +1649,13 @@ function E.stop()
     -- and never put it back, "also wheres the storror hud?", 2026-11-04)
     if _G.MENU and _G.MENU.show_game_ui then pcall(_G.MENU.show_game_ui) end
     if not s then return end
+    -- (the music's volume back as it was before the ending: left mid-way - skipped during Peach's words, or quit - it
+    -- stayed at her 40% duck, and the next new file's opening played that quiet under its sounds: "music doesnt play
+    -- during lakito's entrance", "it never played", 2026-11-09)
+    if s.music_base and MUSIC and MUSIC.set_volume then
+        pcall(MUSIC.set_volume, s.music_base)
+        s.mfade, s.p_music, s.p_duck = nil, nil, nil
+    end
     local same = false
     pcall(function() same = lib.world():GetAddress() == s.world end)
     if same then release(s) end
