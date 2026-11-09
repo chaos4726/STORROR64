@@ -47,4 +47,4 @@ rgba[..., 3] = light
 Image.fromarray((rgba * 255).round().astype(np.uint8), "RGBA").save(OUT)
 print("caustic96: lit share %.2f, mean alpha %.3f" % ((light > 0.05).mean(), light.mean()))
 prev = (np.stack([light, light, light], axis=2) * 255).astype(np.uint8)
-Image.fromarray(np.tile(prev, (2, 2, 1))).resize((512, 512)).save(r"caustic_preview.png")
+Image.fromarray(np.tile(prev, (2, 2, 1))).resize((512, 512)).save("caustic_preview.png")

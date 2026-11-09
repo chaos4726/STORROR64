@@ -6,6 +6,7 @@
 local lib = require("lib")
 local log = lib.log
 local M = { current = nil, volume = 0.55, user = 1.0 }
+M.BASE = M.volume       -- (the tune's own level, before anything turns it down for a while: intro.lua starts at it)
 -- M.user: the player's own setting for Mario 64's music in the game (STORROR's Settings > Audio, MARIO 64 MUSIC:
 -- msettings.lua), 0..1 on top of M.volume, which the game itself turns down and back (the pause screen). The title's
 -- film music is film.lua's, and not this. (2026-10-15: "One new music slide for mario music INGAME only.")

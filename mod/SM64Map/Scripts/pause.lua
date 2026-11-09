@@ -1705,6 +1705,13 @@ M.debug = {
 
 -- The map went (quit to the menu, a reload): forget the screen without touching it.
 function M.forget()
+    -- (the music's volume put back as the pause found it: quit from the pause menu to the file select - the map going
+    -- under it - left it at MUSIC_DOWN, and the next new file's opening played that quiet: "music doesnt play during
+    -- lakito's entrance", "still no music", 2026-11-09)
+    if frozen and frozen.volume then
+        local MUSIC = package.loaded["music"]
+        if MUSIC and MUSIC.set_volume then pcall(MUSIC.set_volume, frozen.volume) end
+    end
     fig = nil
     ui, frozen, M.open, storror_open, closed_t = nil, nil, false, false, nil
     menu_hold = false

@@ -283,6 +283,9 @@ function I.start()
     -- (once, the 50 s it lasts, at its own level - not the in-game music slider's - with the grounds' birds and
     -- waterfall off till it ends: see music.lua M.full. They were a quarter loud, and the outdoors' remix - the
     -- nature sounds - came through over it: "outside music plays over intro music", 2026-11-01)
+    -- (and at the tune's own level, whatever turned it down and never back - a pause quit to the file select, an ending
+    -- left part way: its music played at 40% under the scene's sounds, "it never played", 2026-11-09)
+    if MUSIC and MUSIC.BASE and MUSIC.set_volume and MUSIC.volume ~= MUSIC.BASE then pcall(MUSIC.set_volume, MUSIC.BASE) end
     if MUSIC then pcall(MUSIC.play, SOUNDTRACK, true, true); if MUSIC.hush then pcall(MUSIC.hush, 0.0) end end
     -- (with REMIX MUSIC on, the remix is music only: the scene's own sounds - Peach's "Dear Mario", Lakitu's flight,
     -- the pipe, his "Yahoo!", his landing and "Ha-ha!" - with it from sfx/intro_sfx.wav, the same timeline rendered
