@@ -1,0 +1,2 @@
+length 300
+0-300 sound SOUND_MOVING_SLIDE_DOWN_POLE

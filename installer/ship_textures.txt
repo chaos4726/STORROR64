@@ -1,0 +1,73 @@
+# textures/ pictures that are the mod's own (no Mario 64 picture in them) - shipped as they are
+# (the athlete's Mario/Luigi/Wario/Waluigi clothes are painted over STORROR's own clothing layouts: make_mario_textures.py,
+# make_character_textures.py; their thumbnails are in-game pictures of STORROR's athlete; the cap badges' letters drawn)
+body_mario.png
+denim.png
+jeans_mario.png
+jeans_thumb.png
+jeans_thumb_waluigi.png
+jeans_thumb_wario.png
+shirt_mario.png
+shirt_thumb.png
+shirt_thumb_luigi.png
+shirt_thumb_waluigi.png
+shirt_thumb_wario.png
+shoes_thumb.png
+shoes_thumb_waluigi.png
+shoes_thumb_wario.png
+mario_face_thumb.png
+luigi_face_thumb.png
+wario_face_thumb.png
+waluigi_face_thumb.png
+luigi_cap_logo.png
+wario_cap_logo.png
+waluigi_cap_logo.png
+# drawn by make_flames.py (fire, made from nothing)
+flame_red_0.png
+flame_red_1.png
+flame_red_2.png
+flame_red_3.png
+flame_red_4.png
+flame_red_5.png
+flame_red_6.png
+flame_red_7.png
+flame_blue_0.png
+flame_blue_1.png
+flame_blue_2.png
+flame_blue_3.png
+flame_blue_4.png
+flame_blue_5.png
+flame_blue_6.png
+flame_blue_7.png
+# the ghost race's own art (tools/race_*.py)
+race_checker.png
+race_cloth_bowser.png
+race_cloth_bowser2.png
+race_cloth_bowser3.png
+race_cloth_bowser4.png
+race_cloth_bowser5.png
+race_cloth_mario.png
+race_cloth_mario2.png
+race_glass.png
+race_glow.png
+race_gold.png
+race_white.png
+# drawn shapes and plain colours
+shadow_body.png
+shadow_circle.png
+iris_hole.png
+sky_fade.png
+envfx_snowflake.png
+envfx_waterflake.png
+envfx_white.png
+hud_white.png
+metal_body.png
+metal_silver.png
+ground_sand.png
+ground_sea.png
+ground_snow.png
+cannon_reticle.png
+cannon_scope.png
+black.png
+white.png
+clear4.png

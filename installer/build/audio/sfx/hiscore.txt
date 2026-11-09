@@ -1,0 +1,2 @@
+length 90
+10 sound SOUND_MENU_MARIO_CASTLE_WARP2

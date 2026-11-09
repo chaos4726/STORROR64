@@ -1,0 +1,2 @@
+length 40
+10 sound SOUND_ACTION_CLIMB_UP_POLE

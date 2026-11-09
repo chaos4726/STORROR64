@@ -1,0 +1,2 @@
+length 200
+10 sound SOUND_GENERAL_STAR_APPEARS

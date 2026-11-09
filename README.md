@@ -25,6 +25,8 @@ No Super Mario 64 data can be read from this download. The mod's Super Mario 64 
 5. Drag your Super Mario 64 ROM onto its window, or click **Browse** and pick it. The ROM is checked, then the mod's files are unlocked.
 6. Start STORROR Parkour Pro.
 
+**Windows warning:** SM64Setup.exe isn't code-signed, so Windows may show "Windows protected your PC" when you run it. Click **More info** > **Run anyway**. Some antivirus programs also flag `dwmapi.dll`, the UE4SS mod loader. Allow it if yours does. Every line of the mod's code is in this repository if you want to check it first.
+
 ## Updating
 
 Copy the new download over the old one the same way, then run **SM64Setup.exe** again with your ROM.
@@ -32,6 +34,19 @@ Copy the new download over the old one the same way, then run **SM64Setup.exe** 
 ## Multiplayer
 
 Pause and open the **ONLINE** tab. You can host a public, passworded or friends-only lobby, join a public one, or invite Steam friends.
+
+## Source code
+
+All the mod's code is here to read:
+
+- [`mod/SM64Map/`](mod/SM64Map): the mod itself, the Lua scripts UE4SS loads into STORROR (`Scripts/main.lua` starts it). These are the same scripts that ship in the release zip.
+- [`installer/`](installer): the release builder (`make_release.py`) and the source of SM64Setup.exe (`setup/sm64setup.cpp`), which checks your ROM and unlocks the mod's Super Mario 64 files with it.
+- [`exporter/`](exporter): the tools that read the levels, models and dialog out of a Super Mario 64 ROM.
+- [`sm64net/`](sm64net): the multiplayer DLL's source (Steam peer to peer).
+- [`sm64audio/`](sm64audio): the music and sound renderer's source.
+- [`tools/`](tools): smaller helper scripts used while making the mod.
+
+No Super Mario 64 data is in this repository.
 
 ## Credits
 

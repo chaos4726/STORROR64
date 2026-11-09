@@ -1,0 +1,2 @@
+length 90
+10 sound SOUND_MARIO_YAH_WAH_HOO

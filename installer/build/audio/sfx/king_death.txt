@@ -1,0 +1,2 @@
+length 200
+10 sound SOUND_OBJ_KING_WHOMP_DEATH

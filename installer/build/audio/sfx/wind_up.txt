@@ -1,0 +1,2 @@
+length 45
+0-29 sound SOUND_ENV_WIND2

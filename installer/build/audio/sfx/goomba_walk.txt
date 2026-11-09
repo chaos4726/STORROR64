@@ -1,0 +1,2 @@
+length 60
+10 sound SOUND_OBJ_GOOMBA_ALERT+-0xF0000

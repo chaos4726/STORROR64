@@ -1,0 +1,6 @@
+# the castle grounds' ambience: the outdoor breeze and three birds, each kept going every frame as their objects do
+length 1980
+0-1980 sound SOUND_AIR_CASTLE_OUTDOORS_AMBIENT
+0-1980 sound SOUND_OBJ2_BIRD_CHIRP1
+0-1980 sound SOUND_GENERAL2_BIRD_CHIRP2
+0-1980 sound SOUND_OBJ_BIRD_CHIRP3

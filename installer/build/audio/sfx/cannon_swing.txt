@@ -1,0 +1,2 @@
+length 90
+10 sound SOUND_OBJ_CANNON1+0x10000

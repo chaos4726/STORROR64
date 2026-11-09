@@ -1,0 +1,2 @@
+length 90
+10 sound SOUND_ACTION_SHRINK_INTO_BBH

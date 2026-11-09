@@ -1,0 +1,2 @@
+length 90
+10 sound SOUND_GENERAL_QUIET_POUND1

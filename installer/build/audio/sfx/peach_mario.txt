@@ -1,0 +1,2 @@
+length 240
+10 sound SOUND_PEACH_MARIO

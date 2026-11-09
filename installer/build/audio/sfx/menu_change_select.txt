@@ -1,0 +1,2 @@
+length 150
+10 sound SOUND_MENU_CHANGE_SELECT

@@ -1,0 +1,2 @@
+length 400
+0-399 sound SOUND_AIR_BOWSER_SPIT_FIRE

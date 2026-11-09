@@ -1,0 +1,2 @@
+length 150
+10 sound SOUND_OBJ_BIG_PENGUIN_YELL

@@ -1,0 +1,2 @@
+length 60
+0-17 sound SOUND_ENV_METAL_BOX_PUSH

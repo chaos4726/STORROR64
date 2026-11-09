@@ -1,0 +1,2 @@
+length 180
+10 sound SOUND_GENERAL_BIRDS_FLY_AWAY
