@@ -31,6 +31,18 @@ No Super Mario 64 data can be read from this download. The mod's Super Mario 64 
 
 Copy the new download over the old one the same way, then run **SM64Setup.exe** again with your ROM.
 
+## Uninstall
+
+The mod only adds files to STORROR; it doesn't change any of the game's own, so removing those files puts the game back as it was.
+
+1. In Steam, right-click STORROR Parkour Pro > **Manage** > **Browse local files**, then open `STORRORParkourPRO\Binaries\Win64`.
+2. **Keep your saves?** They're in `ue4ss\Mods\SM64Map\saves.lua`. Copy that file somewhere safe first.
+3. Delete `dwmapi.dll` and the `ue4ss` folder. That removes the mod and UE4SS, the mod loader it came with.
+   - If you use other UE4SS mods, keep those: delete only the `ue4ss\Mods\SM64Map` folder, and remove the `SM64Map : 1` line from `ue4ss\Mods\mods.txt`.
+4. Optional: the secret unlocks are also kept in `%LOCALAPPDATA%\STORRORParkourPRO\Saved\SM64Map_secrets.lua` (so they survive deleted saves). Delete that file too to remove every trace.
+
+To play again later, install it as above. Put your copied `saves.lua` back in the `SM64Map` folder to carry on where you left off.
+
 ## Multiplayer
 
 Pause and open the **ONLINE** tab. You can host a public, passworded or friends-only lobby, join a public one, or invite Steam friends.
