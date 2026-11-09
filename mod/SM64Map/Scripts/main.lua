@@ -66,6 +66,9 @@ _G.MENU = MENU
 local okh, HEALTH = xpcall(require, debug.traceback, "health")
 if not okh then plog("health failed to load: " .. tostring(HEALTH)); HEALTH = nil end
 _G.HEALTH = HEALTH
+-- (Melty's test runs: nothing at all unless its test file is there - melty.lua)
+local okt, MELTY = xpcall(require, debug.traceback, "melty")
+if okt and MELTY then pcall(MELTY.init) else MELTY = nil end
 -- (stale actors from a previous hot reload are swept the next time a scene loads, so the player never falls)
 
 local function safe(fn, label)
@@ -145,6 +148,7 @@ local function frame()
             if not ok3 then plog("boot error: " .. tostring(e3)) end
         end
     end
+    if MELTY and MELTY.active() then pcall(MELTY.tick, dt) end
     dev_t = dev_t + dt
     if dev_t >= 0.5 then
         dev_t = 0.0

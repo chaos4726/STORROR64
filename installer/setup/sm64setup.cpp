@@ -344,11 +344,25 @@ int WINAPI wWinMain(HINSTANCE inst, HINSTANCE, LPWSTR, int show) {
     std::freopen("CONOUT$", "w", stderr);
     return Pack(argc, argv);
   }
-  if (argc >= 2 && std::wstring(argv[1]) == L"--unlock") {   // (a test: the ROM given, no window)
+  // --unlock <rom> [done file]: the ROM given, no window - a test, or Melty's install, which names a file to write once
+  // the files are unlocked (it waits for that file, in its own folder for the ROM)
+  if (argc >= 3 && std::wstring(argv[1]) == L"--unlock") {
     AttachConsole(ATTACH_PARENT_PROCESS);
     std::freopen("CONOUT$", "w", stdout);
     g_wnd = nullptr;
     std::string err = Unlock(argv[2]);
+    if (err.empty() && argc >= 4) {
+      const std::wstring done = argv[3];
+      MakeDirs(Folder(done));
+      HANDLE m = CreateFileW(done.c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, nullptr);
+      if (m == INVALID_HANDLE_VALUE) {
+        err = "Couldn't write the done file.";
+      } else {
+        DWORD put;
+        WriteFile(m, "unlocked\r\n", 10, &put, nullptr);
+        CloseHandle(m);
+      }
+    }
     std::printf("%s\n", err.empty() ? "unlocked" : err.c_str());
     return err.empty() ? 0 : 1;
   }

@@ -80,6 +80,12 @@ local PAGES = {
           get = function(MN) return MN.render96 and MN.render96() end,
           set = function(MN, v) if MN.set_render96 then MN.set_render96(v) end end,
           apply = function(v) if lib.set_r96 then lib.set_r96(v >= 0.5) end end },
+        -- (the sky: OFF, Mario 64's picture of it - RENDER 96's painted clouds, a new player's; ON, the real sky and clouds -
+        -- sunsky.lua. The old BACKGROUND switch, lost from the page: "theres supposed to be an option in settings to turn
+        -- on realistic sky", 2026-11-09)
+        { label = "REALISTIC SKY", toggle = true,
+          get = function() local SS = package.loaded["sunsky"]; return (SS and SS.picture_sky and not SS.picture_sky()) and 1.0 or 0.0 end,
+          set = function(_, v) local SS = package.loaded["sunsky"]; if SS and SS.set_picture_sky then SS.set_picture_sky(v < 0.5) end end },
         -- (the HUD's TIME, the run's clock: the file select's TIMER switch - "add a timer off switch in mario settings",
         -- 2026-11-01; on at once as it is flipped)
         { label = "TIMER", toggle = true,

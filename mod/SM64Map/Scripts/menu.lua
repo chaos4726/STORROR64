@@ -1296,6 +1296,39 @@ function M.start_game(i)
     end
 end
 
+-- Melty's test runs (melty.lua): a game on a file of its own, never written - not one of the player's four (write_saves
+-- writes those alone) - straight to the castle grounds, with no opening scene
+function M.start_test_file()
+    if saves == nil then load_saves() end
+    if menu.leaving then
+        local held = menu.leaving.fading
+        menu.leaving = nil
+        if held then camera_fade(1.0, 0.0, ARRIVE_FADE, false) end
+    end
+    saves.files.melty = { used = true, stars = 0 }
+    if _G.HEALTH then _G.HEALTH.reset(); _G.HEALTH.lives = _G.HEALTH.START_LIVES end
+    M.lives_file = nil
+    close_ui()
+    if FILM then FILM.stop() end
+    pcall(function() lib.pawn():EnableInput(lib.controller()) end)
+    M.state = "game"
+    M.file = "melty"
+    run.last, run.saved, run.going, run.armed = os.clock(), os.clock(), false, false
+    local G = require("game")
+    G.never_entered = false
+    local ok, err = pcall(G.load_scene, "grounds")
+    log("melty test: a file of its own -> grounds (%s %s)", tostring(ok), tostring(err))
+    return ok
+end
+
+-- (Melty's test runs: Start on the title screen, as a player would - melty.lua)
+function M.title_start()
+    if M.state ~= "title" or ui.title_go then return false end
+    close_game_menus()
+    ui.title_go = 2
+    return true
+end
+
 function M.back_to_menu()
     if M.state == "menu" then return end
     if M.state == "game" and saves then pcall(write_saves) end       -- (the file's time so far)

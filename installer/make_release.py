@@ -99,6 +99,13 @@ def main():
     shutil.copy2(WORK + '/installer/README.txt', OUT + '/README.txt')
     shutil.copy2(WORK + '/installer/MUSIC_CREDITS.md', OUT + '/MUSIC_CREDITS.md')     # (the README points to it)
     # Super Mario 64's files: locked
+    # (and a file named for this version, unlocked with the rest: Melty's install recipe waits for it after its unlock,
+    # so a newer release's pack is unlocked again over an older one - installed.txt alone would say "done" for good)
+    for f in os.listdir(MOD + '/Scripts/data'):
+        if f.startswith('unlocked_') and f.endswith('.txt'):
+            os.remove(MOD + '/Scripts/data/' + f)
+    marker = 'Scripts/data/unlocked_%s.txt' % VERSION
+    open(MOD + '/' + marker, 'w', encoding='utf-8', newline='\n').write('STORROR64 %s: the Super Mario 64 files are unlocked\n' % VERSION)
     locked = []
     for d in LOCKED_DIRS:
         locked += walk(MOD, d)
@@ -106,6 +113,7 @@ def main():
     open(lst, 'w', encoding='utf-8', newline='\n').write('\n'.join(locked) + '\n')
     r = subprocess.run([SETUP, '--pack', ROM, lst, MOD.replace('/', '\\'), (MOD_OUT + '/sm64_assets.pak').replace('/', '\\')],
                        capture_output=True, text=True)
+    os.remove(MOD + '/' + marker)
     print(r.stdout.strip(), r.stderr.strip())
     if r.returncode != 0 or not os.path.exists(MOD_OUT + '/sm64_assets.pak'):
         sys.exit('packing failed')

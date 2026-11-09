@@ -19,15 +19,18 @@ local M = {}
 -- The BACKGROUND switch (MARIO SETTINGS - "add a backround switch for real mario 64 backrounds instead of our clouds",
 -- 2026-11-01): MARIO 64, the level's own picture of the sky (sky.lua) even with RENDER 96 on; CLOUDS, this sky. Kept
 -- beside the save files (background.lua); turned live - the sky put up again where he stands (M.set_picture_sky).
+-- A new player's: MARIO 64's picture (RENDER 96's painted clouds), the real sky the MARIO SETTINGS' REALISTIC SKY switch
+-- - a fresh install had the real clouds: "the backround for the level is realistic clouds instead of the render 96
+-- clouds", "theres supposed to be an option in settings to turn on realistic sky", 2026-11-09.
 local BG_FILE = lib.MOD_DIR .. "background.lua"
 M.PICTURE = nil
 function M.picture_sky()
     if M.PICTURE == nil then
-        M.PICTURE = false
+        M.PICTURE = true
         local f = io.open(BG_FILE, "r")
         if f then
             local t = f:read("a"); f:close()
-            if t and t:match("picture%s*=%s*true") then M.PICTURE = true end
+            M.PICTURE = (t and t:match("picture%s*=%s*true")) and true or false
         end
     end
     return M.PICTURE

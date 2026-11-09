@@ -377,6 +377,16 @@ function I.tick(dt)
     local data = s.data
     s.t = s.t + dt
 
+    -- (the Mario face and clothes put on him while he waits out of sight under the pipe: their tick is the pause menu's,
+    -- which the game's own tick runs, and that does not run through the intro - on a new install he came out of the pipe
+    -- as STORROR's athlete and only turned into Mario after the intro: "when the player came out the pipe he didnt look
+    -- like mario", 2026-11-09)
+    do
+        local CP, CL = package.loaded["charpick"], package.loaded["clothpick"]
+        if CP and CP.tick then pcall(CP.tick, dt, false) end
+        if CL and CL.tick then pcall(CL.tick, dt, false) end
+    end
+
     local last = data.frames - 1
     if not s.talking then s.f = min(s.f + dt * data.fps, last) end
     local f = s.f
