@@ -562,6 +562,7 @@ local function pause_vol() return M.user or 1.0 end
 local PAUSE_IN, PAUSE_OUT = 1.0, 0.6
 M.lvl_gain = 1.0
 local pgain, again, amb_was, last_t, lvl_held = 0.0, 1.0, nil, nil, false
+local lvl_up = false            -- (the tune's player turned back up for this opening: M.pause_watch)
 
 -- every tick (music.lua's tick, and msettings.lua's while paused - game.lua's stops short of ours then): paused or not
 -- (pause.lua), and the fades a step on
@@ -590,9 +591,19 @@ function M.pause_watch()
         if IN and IN.active then
             if pz and pz.on then pcall(function() pz.mp:Close() end); pz.on = false end
             pgain, again, amb_was, lvl_held = 0.0, 1.0, nil, false
-            M.lvl_gain = 1.0
+            -- (and the tune's own player turned back up with it: the pause fades it to nothing, and quit from the pause
+            -- to the file select that fade was never undone - the opening's tune, started under it, played silent:
+            -- "music is gone again", 2026-11-09)
+            if M.lvl_gain ~= 1.0 or not lvl_up then
+                M.lvl_gain = 1.0
+                if st and valid(st.comp) then
+                    pcall(function() st.comp:SetVolumeMultiplier(vol() * (st.duck or 1.0)) end)
+                    lvl_up = true
+                end
+            end
             return
         end
+        lvl_up = false
     end
     local path = (paused and M.remix) and pause_file() or nil
     local p = pz
