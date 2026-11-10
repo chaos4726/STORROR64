@@ -7,6 +7,7 @@ Super Mario 64's castle, courses and Bowser stages, rebuilt inside **STORROR Par
 - Peach's castle with every painting, plus all 15 courses and the three Bowser stages, with their stars, enemies and moving platforms.
 - A ghost race on every course as a 7th star, and a key race on each Bowser stage. Race the ghost over the checkpoints to the finish.
 - Online play with Steam friends, peer to peer (no servers).
+- A first person mode, per save file, with its own FIRST PERSON tab of over 50 settings (see below).
 - Render 96 textures and models, and remixed music.
 
 ## What you need
@@ -46,6 +47,10 @@ To play again later, install it as above. Put your copied `saves.lua` back in th
 ## Multiplayer
 
 Pause and open the **ONLINE** tab. You can host a public, passworded or friends-only lobby, join a public one, or invite Steam friends.
+
+## First person
+
+Turn **FIRST PERSON** on at the file select before starting a file: that file plays in first person for good. While you play a first-person file, the pause menu has a **FIRST PERSON** tab (between CONTROLS and SETTINGS) with over 50 settings: field of view, head motion, effects, crosshair, speedometer, flashlight (L), hiding parts of your body, presets and more. The game keeps going behind that tab, so you see each change as you make it. Its last row, **WHAT EACH SETTING DOES**, explains every one. The same settings are in the standalone mod for vanilla STORROR, [StorrorFirstPerson](https://github.com/chaos4726/StorrorFirstPerson).
 
 ## Source code
 

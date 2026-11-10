@@ -25,7 +25,8 @@ MOD_OUT = BIN_OUT + '/ue4ss/Mods/SM64Map'
 LOCKED_DIRS = ['Scripts/data', 'Scripts/data_r96', 'textures', 'textures_tiles_orig', 'sfx', 'music', 'ambience']
 # the mod's own, open
 OPEN_DIRS = ['textures_r96', 'textures_r96_paint_orig', 'textures_r96_seams_orig', 'music_remix', 'sfx_remix', 'ambience_remix']
-OPEN_FILES = ['enabled.txt', 'swim_base.lua', 'bin/sm64net.dll']
+OPEN_FILES = ['enabled.txt', 'swim_base.lua', 'bin/sm64net.dll',
+              'ui/first_person_icon.png']        # (the FIRST PERSON tab's icon - fpextra.lua, 2026-11-10)
 # never: the maker's own play and settings, and what the game remakes
 SKIP_SCRIPTS = {'level_data.lua', 'collision_data.lua'}          # (unused, made from the ROM)
 UE4SS_MODS = ['shared', 'BPModLoaderMod', 'BPML_GenericFunctions', 'ConsoleEnablerMod', 'ConsoleCommandsMod',

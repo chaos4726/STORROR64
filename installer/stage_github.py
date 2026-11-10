@@ -26,6 +26,8 @@ for f in sorted(os.listdir(MOD + "/Scripts")):
         put(MOD + "/Scripts/" + f, "mod/SM64Map/Scripts/" + f)
 for f in ("enabled.txt", "swim_base.lua"):
     put(MOD + "/" + f, "mod/SM64Map/" + f)
+# (the FIRST PERSON tab's icon - fpextra.lua, 2026-11-10)
+put(MOD + "/ui/first_person_icon.png", "mod/SM64Map/ui/first_person_icon.png")
 # its tools: code only, no backups, nothing compiled, no audio or pictures
 for d, exts in (("installer", CODE + (".txt",)), ("exporter", CODE), ("tools", CODE), ("sm64net", (".cpp", ".h", ".rc", ".bat", ".sh")),
                 ("sm64audio", (".py", ".sh", ".c", ".cpp", ".h"))):

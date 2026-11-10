@@ -69,6 +69,9 @@ _G.HEALTH = HEALTH
 -- (Melty's test runs: nothing at all unless its test file is there - melty.lua)
 local okt, MELTY = xpcall(require, debug.traceback, "melty")
 if okt and MELTY then pcall(MELTY.init) else MELTY = nil end
+-- (the first person settings - the FIRST PERSON tab and what it sets - in first person mode only: fpextra.lua)
+local okx, FPX = xpcall(require, debug.traceback, "fpextra")
+if not okx then plog("fpextra failed to load: " .. tostring(FPX)); FPX = nil end
 -- (stale actors from a previous hot reload are swept the next time a scene loads, so the player never falls)
 
 local function safe(fn, label)
@@ -109,7 +112,7 @@ local FORGET_ON_MAP = { "charhold", "charpick", "clothpick", "mariolook", "healt
     "lamps", "rooms", "dialog", "starselect", "transition", "dust", "fog", "loops", "mariocap", "movtex", "chomp",
     "boxes", "sunsky", "swimpose", "waterclimb", "twirl", "camlakitu", "butterfly", "scenery", "mirror", "cork",
     "painting", "roundoff", "footik", "fp", "swim", "slide", "flight", "hang", "hoot", "poles", "caps", "burn", "envfx",
-    "bobomb", "complete", "mp", "gore", "music", "sfx", "film", "bowser_fight", "chat" }
+    "bobomb", "complete", "mp", "gore", "music", "sfx", "film", "bowser_fight", "chat", "fpextra" }
 local map_addr = nil
 local function map_watch()
     local a = nil
@@ -148,6 +151,7 @@ local function frame()
             if not ok3 then plog("boot error: " .. tostring(e3)) end
         end
     end
+    if FPX then pcall(FPX.tick, dt) end
     if MELTY and MELTY.active() then pcall(MELTY.tick, dt) end
     dev_t = dev_t + dt
     if dev_t >= 0.5 then

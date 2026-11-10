@@ -562,7 +562,12 @@ end
 function M.online()
     local MP = package.loaded["mp"]
     local ok, on = pcall(function() return MP and MP.in_lobby and MP.in_lobby() end)
-    return ok and on == true
+    if ok and on == true then return true end
+    -- (and while the FIRST PERSON tab is the one shown - fpextra.lua's settings, seen live on the game behind as they
+    -- change: "the game has to unpause when on the first person tab because you cant see changes live", 2026-11-10.
+    -- His keys stay the menu's, as online; another tab and the game is held again - M.tick)
+    local FPM = _G.FP_MENU
+    return FPM ~= nil and FPM.active == true and FPM.tab_open == true
 end
 function M.halted() return (M.open == true or (M.menu_up ~= nil and M.menu_up() == true)) and not M.online() end
 local function freeze(on)
@@ -1464,6 +1469,13 @@ function M.tick(dt, ctx)
         if MUSIC and MUSIC.set_volume and f.volume then pcall(MUSIC.set_volume, f.volume) end
         frozen = { pawn = f.pawn, world = f.world, online = true }
         log("pause: online now - the game goes on under it")
+    end
+    -- (and back: no longer going on - the FIRST PERSON tab left for another with STORROR's menu still up - held again,
+    -- as any pause)
+    if frozen and frozen.online and menu_hold and not M.online() then
+        freeze(false)
+        freeze(true)
+        log("pause: held again")
     end
     -- (his ragdolled body kept asleep while the game stands still: body_hold)
     if frozen and frozen.sim and frozen.world == here() then pcall(function() frozen.pawn.Mesh:PutAllRigidBodiesToSleep() end) end

@@ -34,6 +34,13 @@ Multiplayer
 Pause, go to the ONLINE tab: host a public, passworded or friends-only lobby, join a public one, or invite Steam
 friends. Peer to peer through Steam: no server of anyone's.
 
+First person
+Turn FIRST PERSON on at the file select before starting a file: that file plays in first person for good. While you
+play a first-person file, the pause menu has a FIRST PERSON tab (between CONTROLS and SETTINGS) with over 50 settings:
+field of view, head motion, effects, crosshair, speedometer, flashlight (L), hiding parts of your body, presets and
+more. The game keeps going behind that tab, so you see each change as you make it. Its last row, WHAT EACH SETTING
+DOES, explains every one.
+
 Credits
 STORROR Parkour PRO is by Hole in the Sleeve Game Studios. Super Mario 64 is Nintendo's. Render 96's textures and models
 are by the Render 96 team (github.com/Render96). The remixed music is by the artists named on the first sign in the
